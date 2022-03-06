@@ -1,36 +1,26 @@
-import logo from './logo.svg';
-import signature from './signature.png';
-import './App.css';
-import './style.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import { Button, Form, NavbarBrand } from 'react-bootstrap';
-import { Navbar } from 'react-bootstrap'
-
-import imageInSrc from './imageInSrc.jpg';
-import imageInPublic from './imageInPublic.png';
-import videomp4 from './myVideo.mp4';
+import "./App.css";
+import logo from './ecologie.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav, Container, NavDropdown, Form, Button } from 'react-bootstrap';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from "./pages/Home";
+import Notfound from "./pages/Notfound";
+import Contact from "./pages/Contact";
+import Recycle from "./pages/Recycle";
+import Navigation from "./Navigation";
 
 function App() {
   return (
-    <div className="App">
-        <div style={{ border:"solid 1px black", maxWidth:'100vw', padding:'20px'}} > 
-        <h1 className="title red">Satouri Ridha</h1>
-        <br ></br>
-        <img  src={imageInSrc} className="imgages" alt="firstimg" />
-        <br ></br>
-        <img src={imageInPublic} className="imgages" alt="scdimage" />
-            {/* Impossible de mettre l image dans le dossier public voir ci dessous
-            Compiled with problems:X
-            ERROR in ./src/App.js 6:0-56
-            Module not found: Error: You attempted to import ../public/imageInPublic.png
-            which falls outside of the project src/ directory. Relative imports outside 
-            of src/ are not supported. */}
-        </div>
-        <video width='320' height='240' controls>
-        <source src={videomp4} type="video/mp4" ></source>
-        </video>
-      
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/recycle" exact component={Recycle} />
+          {/* <Route component={Notfound} /> */}
+        </switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
